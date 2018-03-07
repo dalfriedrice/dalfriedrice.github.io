@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+  -->
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <!-- your app's js -->
+  <script src="app.js"></script>
+
+  <!-- Include the Speech Recognition Directive. -->
+  <script src="directive.js"></script>
+
+  <!-- Controllers-->
+  <script src="controller.js"></script>
+</head>
+
+<body ng-app="starter">
+
+
+  <h1 class="title">Ionic Speech Recognition Demo</h1>
+  <div padding="true" ng-controller="SpeechRecognitionController as speech">
+    <div class="card">
+      <div class="item item-divider">
+        This is what you said!
+      </div>
+      <div class="item item-text-wrap">
+        <p ng-model="speech.transcript">{{speech.transcript}}</p>
+      </div>
+    </div>
+    <button class="button button-block button-royal" ng-speech-recognition-start="" ng-speech-recognition-end="speech.displayTranscript()">
+      Press & Talk
+    </button>
+  </div>
+</body>
+
+</html>
